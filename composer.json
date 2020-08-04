@@ -1,0 +1,28 @@
+{
+    "name": "wanghanwanghan\/dbupdate",
+    "description": "123123",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wanghan",
+            "email": "minglongoc@me.com"
+        }
+    ],
+    "require": {
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.0",
+        "easyswoole/http-client": "^1.4",
+        "symfony/var-dumper": "^5.1",
+        "illuminate/database": "^7.20"
+    },
+    "autoload": {
+        "files": [
+            "src/laravel_dd.php"
+        ],
+        "psr-4": {
+            "Wanghanwanghan\\Dbupdate\\": "src"
+        }
+    }
+}
