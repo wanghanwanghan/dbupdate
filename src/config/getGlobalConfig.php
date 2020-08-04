@@ -32,10 +32,6 @@ class getGlobalConfig
         'prefix' => '',
     ];
 
-
-
-
-
     //法海dataType对应的库表关系
     static $fahaiDB = [
         '涉诉' => [

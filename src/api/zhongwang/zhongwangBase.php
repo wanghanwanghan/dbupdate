@@ -23,9 +23,9 @@ class zhongwangBase
         $this->aes_test = new cryptAES($key_test);
     }
 
-    function post($url,$body,$type='test')
+    function post($url, $body, $type = 'test')
     {
-        $header=[];
+        $header = [];
 
         $body['taxNo'] = $this->taxNo;
 
@@ -33,46 +33,34 @@ class zhongwangBase
 
         $json_param = json_encode($param);
 
-        if (strtoupper($type)==='TEST')
-        {
+        if (strtoupper($type) === 'TEST') {
             $encryptedData = $this->aes_test->encrypt($json_param);
-
-            $url=$this->url_test.$url;
-        }else
-        {
+            $url = $this->url_test . $url;
+        } else {
             $encryptedData = $this->aes->encrypt($json_param);
-
-            $url=$this->url.$url;
+            $url = $this->url . $url;
         }
 
         $base64_str = base64_encode($encryptedData);
 
         $body['param'] = $base64_str;
 
-        if (getGlobalConfig::$fpmMode)
-        {
-            $data=(new fpm_client())->needJsonDecode(false)->send($url,$body,$header,[],'post');
-
-        }else
-        {
-            $data=(new co_client())->needJsonDecode(false)->send($url,$body,$header,[],'post');
+        if (getGlobalConfig::$fpmMode) {
+            $data = (new fpm_client())->needJsonDecode(false)->send($url, $body, $header, [], 'post');
+        } else {
+            $data = (new co_client())->needJsonDecode(false)->send($url, $body, $header, [], 'post');
         }
 
         $data = base64_decode($data);
 
-        if (strtoupper($type)==='TEST')
-        {
+        if (strtoupper($type) === 'TEST') {
             $res = $this->aes_test->decrypt($data);
-        }else
-        {
+        } else {
             $res = $this->aes->decrypt($data);
         }
 
-        return json_decode($res,true);
+        return json_decode($res, true);
     }
-
-
-
 
 
 }

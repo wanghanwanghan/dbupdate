@@ -12,6 +12,7 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-json": "*",
+        "ext-zlib": "*",
         "guzzlehttp/guzzle": "^7.0",
         "easyswoole/http-client": "^1.4",
         "symfony/var-dumper": "^5.1",
