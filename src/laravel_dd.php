@@ -4,16 +4,8 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper as SymfonyHtmlDumper;
 
-/**
- * Class HtmlDumper
- */
 class HtmlDumper extends SymfonyHtmlDumper
 {
-    /**
-     * Colour definitions for output.
-     *
-     * @var array
-     */
     protected $styles = [
         'default' => 'background-color:#fff; color:#222; line-height:1.2em; font-weight:normal; font:12px Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:100000',
         'num' => 'color:#a71d5d',
@@ -31,17 +23,8 @@ class HtmlDumper extends SymfonyHtmlDumper
     ];
 }
 
-/**
- * Class Dumper
- */
 class Dumper
 {
-    /**
-     * Dump a value with elegance.
-     *
-     * @param mixed $value
-     * @return void
-     */
     public function dump($value)
     {
         if (class_exists(CliDumper::class)) {
@@ -54,12 +37,6 @@ class Dumper
 }
 
 if (!function_exists('dd')) {
-    /**
-     * Dump the passed variables and end the script.
-     *
-     * @param mixed
-     * @return void
-     */
     function dd(...$args)
     {
         $dump = (new Dumper);
@@ -75,12 +52,6 @@ if (!function_exists('dd')) {
 }
 
 if (!function_exists('dda')) {
-    /**
-     * Dump the passed array variables and end the script.
-     *
-     * @param mixed
-     * @return void
-     */
     function dda(...$args)
     {
         foreach ($args as $x) {
